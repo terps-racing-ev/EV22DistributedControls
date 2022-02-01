@@ -7,12 +7,14 @@ float readBrakeVoltage(){
   return 0.0;
 }
 
-float readAPPS3V() {
-  return 0.0;
+float readAPPSOne() {
+  //placeholder
+  return 1.0;
 }
 
-float readAPPS5V() {
-  return 0.0;
+float readAPPSTwo() {
+  //placeholder
+  return 1.0;
 }
 
 bool ignitionOn() {

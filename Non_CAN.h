@@ -9,9 +9,9 @@
 
 float readBrakeVoltage();
 
-float readAPPS3V();
+float readAPPSOne();
 
-float readAPPS5V();
+float readAPPSTwo();
 
 bool ignitionOn();
 

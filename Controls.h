@@ -32,10 +32,12 @@ class Controls {
     TR_CAN_Shield_Wrapper* shield;
     
     void startUpSequence();
+    void APPS();
     
   public:
     Controls();
     void doAction();
+    
   
 };
 #endif
