@@ -4,4 +4,5 @@
 
 float voltageToPercentTravelOne(float voltage);
 
+
 float voltageToPercentTravelTwo(float voltage);
