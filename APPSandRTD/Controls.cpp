@@ -26,6 +26,35 @@ void Controls::APPS() {
   float pedalOneTravel = voltageToPercentTravelOne(readAPPSOne());
   float pedalTwoTravel = voltageToPercentTravelTwo(readAPPSTwo());
 
+  //check their percent difference
+  float pedalPercentDifference = abs(pedalOneTravel = pedalTwoTravel);
+
+  boolean implausibleDifference = false;
+  /*
+   * according to T.4.2.5, if the pedal percent difference is greater than
+   * 10, and this implausibility persists for more than 100 ms, then 
+   * the motor should be shut down (timeOutFlag set to true)
+   */
+  if (pedalPercentDifference > 10) {
+    implausibleDifference = true;
+    long startTime = millis();
+    
+    //check if the implausibility persists for more than 100 ms
+    //TODO: might want to not block other code while this check runs?
+    while ((millis() - startTime) <= 100) {
+      pedalOneTravel = voltageToPercentTravelOne(readAPPSOne());
+      pedalTwoTravel = voltageToPercentTravelTwo(readAPPSTwo());
+      pedalPercentDifference = abs(pedalOneTravel = pedalTwoTravel);
+
+      //if the implausibility stops, then continue as normal
+      if (pedalPercentDifference < 10) {
+        implausibleDifference = false;
+        break;
+      }
+      
+    }
+  }
+
   float averagePedalPercent = (pedalOneTravel + pedalTwoTravel) / 2.0;
 }
 

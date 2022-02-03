@@ -1,10 +1,11 @@
+
+//slopes for voltage t
+
 float voltageToPercentTravelOne(float voltage){
-  //placeholder
-  return voltage * 2.0;
+  return voltage * 125 - 20;
 }
 
 
 float voltageToPercentTravelTwo(float voltage){
-  //placeholder
-  return voltage * 5.0;
+  return voltage * -129.87 + 167.53;
 }
