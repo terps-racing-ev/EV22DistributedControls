@@ -65,14 +65,20 @@ void Controls::APPS() {
 
     if (torqueRequest >= MIN_TORQUE && torqueRequest <= MAX_TORQUE) {
       shield->sendTorque(torqueRequest);
+    } else {
+      rangeFault = true;
     }
   } else {
-    rangeFault = true;
+    timeOutFault = true;
   }
 }
 
 void Controls::doAction() {
-  if (currentState == State::STARTUP_SEQUENCE) {
+  if (rangeFault) {
+    shield->sendRangeFault();
+  } else if (timeOutFault) {
+    shield->sendTimeoutFault();
+  } else if (currentState == State::STARTUP_SEQUENCE) {
     startUpSequence();
   } else if (currentState == State::STARTED){
     APPS();

@@ -14,7 +14,8 @@ class TR_CAN_Shield_Wrapper {
   public:
     TR_CAN_Shield_Wrapper(byte can_id, bool debug);
     void sendTorque(int torque);
-  
+    void sendRangeFault();
+    void sendTimeoutFault();
 };
 
 #endif

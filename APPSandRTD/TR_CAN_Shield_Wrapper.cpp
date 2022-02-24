@@ -7,3 +7,11 @@ TR_CAN_Shield_Wrapper::TR_CAN_Shield_Wrapper(byte can_id, bool debug) {
 void TR_CAN_Shield_Wrapper::sendTorque(int torque) {
   
 }
+
+void TR_CAN_Shield_Wrapper::sendRangeFault() {
+  
+}
+
+void TR_CAN_Shield_Wrapper::sendTimeoutFault() {
+  
+}
