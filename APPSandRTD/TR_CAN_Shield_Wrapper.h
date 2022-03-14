@@ -26,6 +26,7 @@ class TR_CAN_Shield_Wrapper {
     void sendTimeoutFault();
     void updateStoredWheelSpeeds();
     int getWheelSpeed(int n);
+    void sendAllData();
 };
 
 #endif

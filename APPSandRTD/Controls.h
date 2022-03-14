@@ -20,26 +20,12 @@
  */
 
 class Controls {
-  private:
-    const float MAX_TORQUE = 190.0f;
-    const float MIN_TORQUE = 0.0f;
-    
-    enum State {STARTUP_SEQUENCE, STARTED};
-    State currentState;
-    
-    bool startUpFlag;
-    bool timeOutFault;
-    bool rangeFault;
-    bool shutDownFlag;
-
+  protected:
     TR_CAN_Shield_Wrapper* shield;
-    
-    void startUpSequence();
-    void APPS();
-    
+   
   public:
     Controls();
-    void doAction();
+    virtual void doAction() = 0;
     
   
 };

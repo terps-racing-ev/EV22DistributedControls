@@ -2,11 +2,12 @@
 #include "TR_CAN_Shield_Wrapper.h"
 #include "Non_CAN.h"
 #include "Controls.h"
+#include "APPSControls.h"
 
 TR_CAN_Shield canShield();
 
 int sensor_value;
-Controls* car;
+APPSControls* car;
 
 void setup() {
   Serial.begin(9600);
@@ -16,7 +17,7 @@ void setup() {
   //input buttons for testing
   pinMode(2, INPUT);
   pinMode(7, INPUT);
-  car = new Controls();
+  car = new APPSControls();
 
 }
 
