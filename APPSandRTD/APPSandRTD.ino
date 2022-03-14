@@ -1,8 +1,3 @@
-/*
- * 
- * TR CAN Shield example sketch
- */
-
 #include <TR_CAN_Shield.h>
 #include "TR_CAN_Shield_Wrapper.h"
 #include "Non_CAN.h"

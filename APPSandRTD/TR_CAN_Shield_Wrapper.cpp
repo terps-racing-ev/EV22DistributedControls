@@ -33,11 +33,8 @@ void TR_CAN_Shield_Wrapper::updateStoredWheelSpeeds() {
 
   byte receiveBuffer[8];
   while (!wheelSpeed1Updated && !wheelSpeed2Updated && !wheelSpeed3Updated) {
-    shield->can_receive(0, receiveBuffer);
-    
-    //This is not how you get the CAN ID, need to update that
-    int sendingID = receiveBuffer[0];
-    
+    byte sendingID = shield->can_receive(0, receiveBuffer);
+        
     int data = receiveBuffer[1] + receiveBuffer[2];
     
     if (sendingID == wheelSpeedCANID1) {
