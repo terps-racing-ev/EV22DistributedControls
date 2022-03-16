@@ -25,3 +25,8 @@ int coolantTempTransfer(int in) {
   }
   return round(trans);
 }
+
+//placeholder
+int calculateVehicleSpeed(int wheelOne, int wheelTwo, int wheelThree) {
+  return 0;
+}

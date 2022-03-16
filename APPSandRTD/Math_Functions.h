@@ -14,4 +14,6 @@ float calculateTorque(float percentTravel);
 
 
 int coolantTempTransfer(int in);
+
+int calculateVehicleSpeed(int wheelOne, int wheelTwo, int wheelThree);
 #endif
