@@ -5,5 +5,5 @@
 #include "Math_Functions.h"
 
 void DataSendingControls::doAction() {
-  shield->sendAllData();
+  shield->sendAllData(0);
 }

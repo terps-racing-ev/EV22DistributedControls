@@ -1,4 +1,5 @@
 #include "TR_CAN_Shield_Wrapper.h"
+#include "Non_CAN.h"
 #include "Math_functions.h"
 
 TR_CAN_Shield_Wrapper::TR_CAN_Shield_Wrapper(byte can_id, bool debug) {
@@ -64,13 +65,13 @@ int TR_CAN_Shield_Wrapper::getWheelSpeed(int n){
   return -1;
 }
 
-void TR_CAN_Shield_Wrapper::sendAllData() {
+void TR_CAN_Shield_Wrapper::sendAllData(int vehicleSpeed) {
   byte data[8];
   
-  int suspensionTravel = analogRead(A0); //TODO transfer
+  int suspensionTravel = getSuspensionTravel(); //TODO transfer
   data[0] = (byte) suspensionTravel;
 
-  int wheelSpeed = analogRead(A1); //TODO transfer
+  int wheelSpeed = readWheelSpeedSensor(); //TODO transfer
   if (wheelSpeed > 255) {
     data[1] = 255;
     data[2] = (byte) (wheelSpeed - 255);
@@ -78,11 +79,10 @@ void TR_CAN_Shield_Wrapper::sendAllData() {
     data[1] = (byte) wheelSpeed;
     data[2] = 0;
   }
+  
+  data[3] = (byte) vehicleSpeed;
 
-  int vehicleSpeedCalc = analogRead(A2); //TODO transfer
-  data[3] = (byte) vehicleSpeedCalc;
-
-  int steeringAng = analogRead(A3);
+  int steeringAng = getSteeringAngle();
   if (steeringAng > 255) {
     data[4] = 255;
     data[5] = (byte) (steeringAng - 255);
@@ -91,7 +91,7 @@ void TR_CAN_Shield_Wrapper::sendAllData() {
     data[5] = 0;
   }
 
-  int coolantTemp = analogRead(A4);
+  int coolantTemp = getCoolantTemp();
   coolantTemp = coolantTempTransfer(coolantTemp);
   data[6] = (byte) coolantTemp;
   

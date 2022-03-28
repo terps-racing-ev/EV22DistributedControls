@@ -21,8 +21,20 @@ bool ignitionOn() {
   return digitalRead(2);
 }
 
-bool shutdownSignal() {
-  return false;
+int getSteeringAngle() {
+  return 0;
+}
+
+int getCoolantTemp(){
+  return 0;
+}
+
+int getSuspensionTravel(){
+  return 0;
+}
+
+int readWheelSpeedSensor(){
+  return 0;
 }
 
 void playBuzzer() {

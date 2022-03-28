@@ -15,7 +15,13 @@ float readAPPSTwo();
 
 bool ignitionOn();
 
-bool shutdownSignal();
+int getSteeringAngle();
+
+int getCoolantTemp();
+
+int getSuspensionTravel();
+
+int readWheelSpeedSensor();
 
 void playBuzzer();
 #endif
