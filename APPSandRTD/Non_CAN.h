@@ -21,6 +21,7 @@ int getCoolantTemp();
 
 int getSuspensionTravel();
 
+const int PULSES_PER_ROTATION = 60;
 int readWheelSpeedSensor();
 
 void playBuzzer();
