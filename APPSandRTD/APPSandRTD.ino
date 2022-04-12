@@ -10,6 +10,7 @@ int sensor_value;
 APPSControls* car;
 
 void setup() {
+  Serial.flush();
   Serial.begin(9600);
   Serial.print("started");
   //buzzer

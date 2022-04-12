@@ -14,7 +14,7 @@ APPSControls::APPSControls() {
 }
 
 void APPSControls::startUpSequence() {
-  if (ignitionOn() && readBrakeVoltage() > 2.0) {
+  if (true || (ignitionOn() && readBrakeVoltage() > 2.0)) {
     playBuzzer();
     currentState = State::STARTED;
   }
@@ -22,9 +22,10 @@ void APPSControls::startUpSequence() {
 
 void APPSControls::APPS() {
   //get the percent travel for each pedal.
-  float pedalOneTravel = voltageToPercentTravelOne(readAPPSOne());
-  float pedalTwoTravel = voltageToPercentTravelTwo(readAPPSTwo());
-
+  float pedalOneTravel = voltageToPercentTravelOne(readAPPSOne(shield->shield));
+  float pedalTwoTravel = voltageToPercentTravelTwo(readAPPSTwo(shield->shield));
+  String p = String(pedalOneTravel);
+  Serial.println("p: " + p);
   //check their percent difference
   float pedalPercentDifference = abs(pedalOneTravel = pedalTwoTravel);
 
@@ -39,7 +40,7 @@ void APPSControls::APPS() {
    * the motor should be shut down (timeOutFlag set to true)
    */
   //TODO: Move implausibility check into another function?
-  if (pedalPercentDifference > 10) {
+  if (false && pedalPercentDifference > 10) {
     implausibleDifference = true;
     long startTime = millis();
     
@@ -47,8 +48,8 @@ void APPSControls::APPS() {
     //TODO: might want to not block other code while this check runs?
     while ((millis() - startTime) <= 100) {
       
-      pedalOneTravel = voltageToPercentTravelOne(readAPPSOne());
-      pedalTwoTravel = voltageToPercentTravelTwo(readAPPSTwo());
+      pedalOneTravel = voltageToPercentTravelOne(readAPPSOne(shield->shield));
+      pedalTwoTravel = voltageToPercentTravelTwo(readAPPSTwo(shield->shield));
       pedalPercentDifference = abs(pedalOneTravel = pedalTwoTravel);
 
       //if the implausibility stops, then continue as normal
@@ -61,14 +62,18 @@ void APPSControls::APPS() {
   }
 
   if (!implausibleDifference) {
-    float averagePedalPercent = (pedalOneTravel + pedalTwoTravel) / 2.0;
+    //float averagePedalPercent = (pedalOneTravel + pedalTwoTravel) / 2.0;
 
-    float torqueRequest = calculateTorque(averagePedalPercent);
+    float torqueRequest = calculateTorque(pedalOneTravel);//calculateTorque(averagePedalPercent);
+    String r = String(torqueRequest);
+    Serial.println("t: " + r);
 
     if (torqueRequest >= MIN_TORQUE && torqueRequest <= MAX_TORQUE) {
-      shield->sendTorque(torqueRequest);
+      String t = String(torqueRequest);
+      //Serial.println("torque request: " + t);
+      //shield->sendTorque(torqueRequest);
     } else {
-      rangeFault = true;
+      //rangeFault = true;
     }
   } else {
     timeOutFault = true;

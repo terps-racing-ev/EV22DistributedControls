@@ -7,29 +7,29 @@ float readBrakeVoltage(){
   return 0.0;
 }
 
-float readAPPSOne() {
-  return analogRead(1);
+float readAPPSOne(TR_CAN_Shield* shield) {
+  return analogRead(0);
 }
 
-float readAPPSTwo() {
+float readAPPSTwo(TR_CAN_Shield* shield) {
   //placeholder
-  return analogRead(2);
+  return shield->analogRead(2);
 }
 
 bool ignitionOn() {
   return digitalRead(2);
 }
 
-int getSteeringAngle() {
-  return analogRead(3);
+int getSteeringAngle(TR_CAN_Shield* shield) {
+  return shield->analogRead(3);
 }
 
-int getCoolantTemp(){
-  return analogRead(4);
+int getCoolantTemp(TR_CAN_Shield* shield){
+  return shield->analogRead(4);
 }
 
-int getSuspensionTravel(){
-  return analogRead(0);
+int getSuspensionTravel(TR_CAN_Shield* shield){
+  return shield->analogRead(0);
 }
 
 int readWheelSpeedSensor(){

@@ -1,6 +1,7 @@
 #ifndef NON_CAN
 #define NON_CAN
 #include <Arduino.h>
+#include "TR_CAN_Shield_Wrapper.h"
 
 /*
  * Functions to read the  different inputs that don't use information sent over CAN.
@@ -9,17 +10,17 @@
 
 float readBrakeVoltage();
 
-float readAPPSOne();
+float readAPPSOne(TR_CAN_Shield* shield);
 
-float readAPPSTwo();
+float readAPPSTwo(TR_CAN_Shield* shield);
 
 bool ignitionOn();
 
-int getSteeringAngle();
+int getSteeringAngle(TR_CAN_Shield* shield);
 
-int getCoolantTemp();
+int getCoolantTemp(TR_CAN_Shield* shield);
 
-int getSuspensionTravel();
+int getSuspensionTravel(TR_CAN_Shield* shield);
 
 const int PULSES_PER_ROTATION = 60;
 int readWheelSpeedSensor();

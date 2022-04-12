@@ -1,9 +1,12 @@
 #include <math.h>
+#include <Arduino.h>
 #include "Math_Functions.h"
 
 //slopes for voltage determined by graphs on EV22 ESF doc
 
 float voltageToPercentTravelOne(float voltage){
+  String v = String(voltage);
+  Serial.println("v: " + v);
   return voltage * 1.25 - 0.20;
 }
 

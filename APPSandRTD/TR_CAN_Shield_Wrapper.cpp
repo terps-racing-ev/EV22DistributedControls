@@ -68,7 +68,7 @@ int TR_CAN_Shield_Wrapper::getWheelSpeed(int n){
 void TR_CAN_Shield_Wrapper::sendAllData(int vehicleSpeed) {
   byte data[8];
   
-  int suspensionTravel = getSuspensionTravel(); //TODO transfer
+  int suspensionTravel = getSuspensionTravel(shield); //TODO transfer
   data[0] = (byte) suspensionTravel;
 
   int wheelSpeed = readWheelSpeedSensor(); //TODO transfer
@@ -82,7 +82,7 @@ void TR_CAN_Shield_Wrapper::sendAllData(int vehicleSpeed) {
   
   data[3] = (byte) vehicleSpeed;
 
-  int steeringAng = getSteeringAngle();
+  int steeringAng = getSteeringAngle(shield);
   if (steeringAng > 255) {
     data[4] = 255;
     data[5] = (byte) (steeringAng - 255);
@@ -91,7 +91,7 @@ void TR_CAN_Shield_Wrapper::sendAllData(int vehicleSpeed) {
     data[5] = 0;
   }
 
-  int coolantTemp = getCoolantTemp();
+  int coolantTemp = getCoolantTemp(shield);
   coolantTemp = coolantTempTransfer(coolantTemp);
   data[6] = (byte) coolantTemp;
   

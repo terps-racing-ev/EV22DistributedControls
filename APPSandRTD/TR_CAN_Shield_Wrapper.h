@@ -10,7 +10,6 @@
  
 class TR_CAN_Shield_Wrapper {
   private:
-    TR_CAN_Shield* shield;
     /* specific numbers are placeholders */
     const int wheelSpeedCANID1 = 1;
     const int wheelSpeedCANID2 = 2;
@@ -21,6 +20,7 @@ class TR_CAN_Shield_Wrapper {
     int wheelSpeed3;
   public:
     TR_CAN_Shield_Wrapper(byte can_id, bool debug);
+    TR_CAN_Shield* shield;
     void sendTorque(int torque);
     void sendRangeFault();
     void sendTimeoutFault();
