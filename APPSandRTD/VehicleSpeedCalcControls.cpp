@@ -5,11 +5,17 @@
 #include "Math_Functions.h"
 
 void VehicleSpeedCalcControls::doAction() {
+  /*
   shield->updateStoredWheelSpeeds();
   wheelSpeed1 = shield->getWheelSpeed(1);
   wheelSpeed2 = shield->getWheelSpeed(2);
   wheelSpeed3 = shield->getWheelSpeed(3);
   int vehicleSpeed = calculateVehicleSpeed(wheelSpeed1, wheelSpeed2, wheelSpeed3);
-  
-  shield->sendAllData(vehicleSpeed);
+  */
+
+  shield->updateStoredTorque();
+  String s = String(shield->getStoredTorque());
+
+  Serial.print(s + "\n");
+  //shield->sendAllData(vehicleSpeed);
 }

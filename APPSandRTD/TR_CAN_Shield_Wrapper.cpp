@@ -29,6 +29,7 @@ void TR_CAN_Shield_Wrapper::sendTimeoutFault() {
 }
 
 void TR_CAN_Shield_Wrapper::updateStoredWheelSpeeds() {
+  
   boolean wheelSpeed1Updated = false;
   boolean wheelSpeed2Updated = false;
   boolean wheelSpeed3Updated = false;
@@ -53,6 +54,24 @@ void TR_CAN_Shield_Wrapper::updateStoredWheelSpeeds() {
   
 }
 
+void TR_CAN_Shield_Wrapper::updateStoredTorque() {
+  boolean torqueUpdated = false;
+  byte receiveBuffer[8];
+  
+    while (!torqueUpdated) {
+      short sendingID = shield->can_receive(0, receiveBuffer);
+        
+      int data = receiveBuffer[0] + receiveBuffer[1];
+    
+      if (sendingID == wheelSpeedCANID1) {
+        receivedTorque = data;
+        torqueUpdated = true;
+      }
+ }
+}
+int TR_CAN_Shield_Wrapper::getStoredTorque() {
+  return receivedTorque;
+}
 int TR_CAN_Shield_Wrapper::getWheelSpeed(int n){
   if (n == 1) {
     return wheelSpeed1;

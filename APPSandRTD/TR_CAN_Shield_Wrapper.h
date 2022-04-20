@@ -18,6 +18,9 @@ class TR_CAN_Shield_Wrapper {
     int wheelSpeed1;
     int wheelSpeed2;
     int wheelSpeed3;
+
+    /* for testing */
+    int receivedTorque;
   public:
     TR_CAN_Shield_Wrapper(byte can_id, bool debug);
     TR_CAN_Shield* shield;
@@ -25,7 +28,9 @@ class TR_CAN_Shield_Wrapper {
     void sendRangeFault();
     void sendTimeoutFault();
     void updateStoredWheelSpeeds();
+    void updateStoredTorque();
     int getWheelSpeed(int n);
+    int getStoredTorque();
     void sendAllData(int vehicleSpeed);
 };
 
