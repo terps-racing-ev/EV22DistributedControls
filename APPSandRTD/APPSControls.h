@@ -19,7 +19,7 @@ class APPSControls: public Controls {
     const int brakeIndicatorPin = 13;
     
   public:
-    APPSControls();
+    APPSControls(int n);
     void doAction();
 };
 

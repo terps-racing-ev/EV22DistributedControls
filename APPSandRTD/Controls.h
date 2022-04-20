@@ -24,7 +24,7 @@ class Controls {
     TR_CAN_Shield_Wrapper* shield;
    
   public:
-    Controls();
+    Controls(int n);
     virtual void doAction() = 0;
     
   

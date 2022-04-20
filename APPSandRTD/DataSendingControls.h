@@ -3,7 +3,7 @@
 
 class DataSendingControls: public Controls {
   public:
-    DataSendingControls();
+    DataSendingControls(int n);
     void doAction();
 };
 

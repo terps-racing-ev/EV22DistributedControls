@@ -4,7 +4,7 @@
 #include "TR_CAN_Shield_Wrapper.h"
 #include "Math_Functions.h"
 
-APPSControls::APPSControls() {
+APPSControls::APPSControls(int n): Controls(n) {
   currentState = State::STARTUP_SEQUENCE;
 
   startUpFlag = false;

@@ -16,7 +16,7 @@ void setup() {
   //Serial.print("Voltage, Calculated Travel, Calculated Torque\n");
   //buzzer
   //car = new VehicleSpeedCalcControls();
-  car = new APPSControls();
+  car = new APPSControls(0);
 
 }
 

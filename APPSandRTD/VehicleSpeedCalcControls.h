@@ -8,7 +8,7 @@ class VehicleSpeedCalcControls: public Controls {
     int wheelSpeed3;
     int wheelSpeed4;
   public:
-    VehicleSpeedCalcControls();
+    VehicleSpeedCalcControls(int n);
     void doAction();
 };
 

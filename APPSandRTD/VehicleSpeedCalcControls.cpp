@@ -4,8 +4,7 @@
 #include "TR_CAN_Shield_Wrapper.h"
 #include "Math_Functions.h"
 
-VehicleSpeedCalcControls::VehicleSpeedCalcControls() {
-  
+VehicleSpeedCalcControls::VehicleSpeedCalcControls(int n) : Controls(n){
 }
 void VehicleSpeedCalcControls::doAction() {
   /*
