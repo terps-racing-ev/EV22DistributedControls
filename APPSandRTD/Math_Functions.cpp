@@ -7,17 +7,21 @@
 float voltageToPercentTravelOne(float voltage){
 
   voltage = (voltage*5.0/1023.0) - 2.52;
-  String v = String(voltage);
-  Serial.print("voltage:" + v);
-  Serial.print("\t");
+  //String v = String(voltage);
+  //Serial.print("voltage:" + v);
+  //Serial.print("\t");
 
-  return voltage * 1/0.64;
-
+  return voltage * 1.0/0.64;
 }
 
 
 float voltageToPercentTravelTwo(float voltage){
-  return voltage * -1.2987 + 1.6753;
+  voltage = (voltage*5.0/1023.0) - 2.56;
+  String v = String(voltage);
+  Serial.print("voltage:" + v);
+  Serial.print("\t");
+
+  return voltage * -1.0/0.57;
 }
 
 

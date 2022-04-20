@@ -13,7 +13,7 @@ float readAPPSOne(TR_CAN_Shield* shield) {
 
 float readAPPSTwo(TR_CAN_Shield* shield) {
   //placeholder
-  return shield->analogRead(2);
+  return analogRead(2);
 }
 
 bool ignitionOn() {

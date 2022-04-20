@@ -24,7 +24,7 @@ void APPSControls::APPS() {
   //get the percent travel for each pedal.
   float pedalOneTravel = voltageToPercentTravelOne(readAPPSOne(shield->shield));
   float pedalTwoTravel = voltageToPercentTravelTwo(readAPPSTwo(shield->shield));
-  String p = String(pedalOneTravel);
+  String p = String(pedalTwoTravel);
   /*
   Serial.print("pedal_travel:" + p);
   Serial.print("\t");
@@ -68,7 +68,7 @@ void APPSControls::APPS() {
   if (!implausibleDifference) {
     //float averagePedalPercent = (pedalOneTravel + pedalTwoTravel) / 2.0;
 
-    float torqueRequest = calculateTorque(pedalOneTravel);//calculateTorque(averagePedalPercent);
+    float torqueRequest = calculateTorque(pedalTwoTravel);//calculateTorque(averagePedalPercent);
     String r = String(torqueRequest);
     //Serial.println("torque:" + r);
 
