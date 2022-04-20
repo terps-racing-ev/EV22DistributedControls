@@ -4,6 +4,9 @@
 #include "TR_CAN_Shield_Wrapper.h"
 #include "Math_Functions.h"
 
+VehicleSpeedCalcControls::VehicleSpeedCalcControls() {
+  
+}
 void VehicleSpeedCalcControls::doAction() {
   /*
   shield->updateStoredWheelSpeeds();

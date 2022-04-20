@@ -66,16 +66,16 @@ void APPSControls::APPS() {
   }
 
   if (!implausibleDifference) {
-    //float averagePedalPercent = (pedalOneTravel + pedalTwoTravel) / 2.0;
+    float averagePedalPercent = (pedalOneTravel + pedalTwoTravel) / 2.0;
 
-    float torqueRequest = calculateTorque(pedalTwoTravel);//calculateTorque(averagePedalPercent);
+    float torqueRequest = calculateTorque(averagePedalPercent);
     String r = String(torqueRequest);
-    //Serial.println("torque:" + r);
+    Serial.println("torque:" + r);
 
     if (torqueRequest >= MIN_TORQUE && torqueRequest <= MAX_TORQUE) {
       String t = String(torqueRequest);
       Serial.println("torque request: " + t);
-      //shield->sendTorque(torqueRequest);
+      shield->sendTorque(torqueRequest);
     } else {
       //rangeFault = true;
     }
