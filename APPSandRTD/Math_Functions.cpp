@@ -5,9 +5,14 @@
 //slopes for voltage determined by graphs on EV22 ESF doc
 
 float voltageToPercentTravelOne(float voltage){
+
+  voltage = (voltage*5.0/1023.0) - 2.52;
   String v = String(voltage);
-  Serial.println("v: " + v);
-  return voltage * 1.25 - 0.20;
+  Serial.print("voltage:" + v);
+  Serial.print("\t");
+
+  return voltage * 1/0.64;
+
 }
 
 

@@ -12,12 +12,8 @@ APPSControls* car;
 void setup() {
   Serial.flush();
   Serial.begin(9600);
-  Serial.print("started");
+  //Serial.print("Voltage, Calculated Travel, Calculated Torque\n");
   //buzzer
-  pinMode(9, OUTPUT);
-  //input buttons for testing
-  pinMode(2, INPUT);
-  pinMode(7, INPUT);
   car = new APPSControls();
 
 }

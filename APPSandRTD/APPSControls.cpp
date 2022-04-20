@@ -25,9 +25,13 @@ void APPSControls::APPS() {
   float pedalOneTravel = voltageToPercentTravelOne(readAPPSOne(shield->shield));
   float pedalTwoTravel = voltageToPercentTravelTwo(readAPPSTwo(shield->shield));
   String p = String(pedalOneTravel);
-  Serial.println("p: " + p);
-  //check their percent difference
-  float pedalPercentDifference = abs(pedalOneTravel = pedalTwoTravel);
+  /*
+  Serial.print("pedal_travel:" + p);
+  Serial.print("\t");
+  */
+  Serial.println("pedal_travel:" + p);
+  //check their percent difference00
+  float pedalPercentDifference = abs(pedalOneTravel - pedalTwoTravel);
 
   boolean implausibleDifference = false;
 
@@ -66,11 +70,11 @@ void APPSControls::APPS() {
 
     float torqueRequest = calculateTorque(pedalOneTravel);//calculateTorque(averagePedalPercent);
     String r = String(torqueRequest);
-    Serial.println("t: " + r);
+    //Serial.println("torque:" + r);
 
     if (torqueRequest >= MIN_TORQUE && torqueRequest <= MAX_TORQUE) {
       String t = String(torqueRequest);
-      //Serial.println("torque request: " + t);
+      Serial.println("torque request: " + t);
       //shield->sendTorque(torqueRequest);
     } else {
       //rangeFault = true;
