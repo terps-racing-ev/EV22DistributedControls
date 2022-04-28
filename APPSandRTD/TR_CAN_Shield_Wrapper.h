@@ -1,5 +1,5 @@
-#ifndef TR_CAN_SHIELD_WRAPPER
-#define TR_CAN_SHIELD_WRAPPER
+#ifndef TR_CAN_SHIELD_WRAPPER_H
+#define TR_CAN_SHIELD_WRAPPER_H
 
 #include <TR_CAN_Shield.h>
 

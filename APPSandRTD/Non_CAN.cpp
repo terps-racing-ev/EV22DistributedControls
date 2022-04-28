@@ -4,20 +4,20 @@ float readBrakeVoltage(){
   if (digitalRead(0) == 1){
     return 3.0;
   }
-  return 0.0;
+  return 3.0;
 }
 
 float readAPPSOne(TR_CAN_Shield* shield) {
-  return analogRead(0);
+  return shield->analogRead(0);
 }
 
 float readAPPSTwo(TR_CAN_Shield* shield) {
   //placeholder
-  return analogRead(2);
+  return shield->analogRead(2);
 }
 
 bool ignitionOn() {
-  return digitalRead(2);
+  return digitalRead(4);
 }
 
 int getSteeringAngle(TR_CAN_Shield* shield) {

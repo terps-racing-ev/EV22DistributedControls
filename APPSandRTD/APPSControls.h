@@ -1,5 +1,5 @@
-#ifndef APPSCONTROLS
-#define APPSCONTROLS
+#ifndef APPSCONTROLS_H
+#define APPSCONTROLS_H
 class APPSControls: public Controls {
    private:
     const float MAX_TORQUE = 190.0f;

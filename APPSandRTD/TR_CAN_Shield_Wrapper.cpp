@@ -63,7 +63,7 @@ void TR_CAN_Shield_Wrapper::updateStoredTorque() {
         
       int data = receiveBuffer[0] + receiveBuffer[1];
     
-      if (sendingID == wheelSpeedCANID1) {
+      if (sendingID == 0) {
         receivedTorque = data;
         torqueUpdated = true;
       }

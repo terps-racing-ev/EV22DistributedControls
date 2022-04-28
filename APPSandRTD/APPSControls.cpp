@@ -29,7 +29,8 @@ void APPSControls::APPS() {
   Serial.print("pedal_travel:" + p);
   Serial.print("\t");
   */
-  Serial.println("pedal_travel:" + p);
+  //Serial.print("pedal_travel:" + p);
+  //Serial.print("\t");
   //check their percent difference00
   float pedalPercentDifference = abs(pedalOneTravel - pedalTwoTravel);
 
@@ -38,13 +39,14 @@ void APPSControls::APPS() {
   if(pedalOneTravel > 0 || pedalTwoTravel > 0) {
     digitalWrite(brakeIndicatorPin, HIGH);
   }
+
   /*
    * according to T.4.2.5, if the pedal percent difference is greater than
    * 10, and this implausibility persists for more than 100 ms, then 
    * the motor should be shut down (timeOutFlag set to true)
    */
   //TODO: Move implausibility check into another function?
-  if (false && pedalPercentDifference > 10) {
+  if (false && pedalPercentDifference > 0.1) {
     implausibleDifference = true;
     long startTime = millis();
     
@@ -54,7 +56,7 @@ void APPSControls::APPS() {
       
       pedalOneTravel = voltageToPercentTravelOne(readAPPSOne(shield->shield));
       pedalTwoTravel = voltageToPercentTravelTwo(readAPPSTwo(shield->shield));
-      pedalPercentDifference = abs(pedalOneTravel = pedalTwoTravel);
+      pedalPercentDifference = abs(pedalOneTravel - pedalTwoTravel);
 
       //if the implausibility stops, then continue as normal
       if (pedalPercentDifference < 10) {
@@ -66,21 +68,32 @@ void APPSControls::APPS() {
   }
 
   if (!implausibleDifference) {
+    /*
+    Serial.print("pedal_one: ");
+    Serial.print(pedalOneTravel);
+    Serial.print("\t");
+    Serial.print("pedal_two: "); 
+    Serial.print("\t");
+    Serial.print(pedalTwoTravel);
+    */
     float averagePedalPercent = (pedalOneTravel + pedalTwoTravel) / 2.0;
-
-    float torqueRequest = calculateTorque(averagePedalPercent);
-    String r = String(torqueRequest);
-    Serial.println("torque:" + r);
+    //Serial.print("avg_percent: ");
+    //Serial.print(averagePedalPercent);
+    //Serial.print("\t");
+    
+    //float torqueRequest = calculateTorque(averagePedalPercent);
+    float torqueRequest = calculateTorque(pedalOneTravel);
+  
 
     if (torqueRequest >= MIN_TORQUE && torqueRequest <= MAX_TORQUE) {
       String t = String(torqueRequest);
       Serial.println("torque request: " + t);
       shield->sendTorque(torqueRequest);
     } else {
-      //rangeFault = true;
+      rangeFault = true;
     }
   } else {
-    timeOutFault = true;
+    //timeOutFault = true;
   }
 }
 

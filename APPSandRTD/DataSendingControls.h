@@ -1,5 +1,5 @@
-#ifndef DATASENDINGCONTROLS
-#define DATASENDINGCONTROLS
+#ifndef DATASENDINGCONTROLS_H
+#define DATASENDINGCONTROLS_H
 
 class DataSendingControls: public Controls {
   public:

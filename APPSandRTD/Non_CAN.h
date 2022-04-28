@@ -1,5 +1,5 @@
-#ifndef NON_CAN
-#define NON_CAN
+#ifndef NON_CAN_H
+#define NON_CAN_H
 #include <Arduino.h>
 #include "TR_CAN_Shield_Wrapper.h"
 

@@ -1,5 +1,5 @@
-#ifndef STATE
-#define STATE
+#ifndef CONTROLS_H
+#define CONTROLS_H
 
 #include "TR_CAN_Shield_Wrapper.h"
 
