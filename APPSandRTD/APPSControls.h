@@ -1,5 +1,6 @@
 #ifndef APPSCONTROLS_H
 #define APPSCONTROLS_H
+#include <LiquidCrystal.h>
 class APPSControls: public Controls {
    private:
     const float MAX_TORQUE = 190.0f;
@@ -17,6 +18,8 @@ class APPSControls: public Controls {
     void APPS();
 
     const int brakeIndicatorPin = 13;
+
+
     
   public:
     APPSControls(int n);

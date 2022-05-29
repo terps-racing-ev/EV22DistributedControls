@@ -3,7 +3,7 @@
 #include "Non_CAN.h"
 #include "TR_CAN_Shield_Wrapper.h"
 #include "Math_Functions.h"
-
+#include <LiquidCrystal.h>
 APPSControls::APPSControls(int n): Controls(n) {
   currentState = State::STARTUP_SEQUENCE;
 
@@ -11,6 +11,8 @@ APPSControls::APPSControls(int n): Controls(n) {
   timeOutFault = false;
   rangeFault = false;
   shutDownFlag = false;
+
+
 }
 
 void APPSControls::startUpSequence() {
@@ -37,7 +39,8 @@ void APPSControls::APPS() {
   boolean implausibleDifference = false;
 
   if(pedalOneTravel > 0 || pedalTwoTravel > 0) {
-    digitalWrite(brakeIndicatorPin, HIGH);
+    //commented out because it messes with the screen
+    //digitalWrite(brakeIndicatorPin, HIGH);
   }
 
   /*
@@ -90,7 +93,7 @@ void APPSControls::APPS() {
       Serial.println("torque request: " + t);
       shield->sendTorque(torqueRequest);
     } else {
-      rangeFault = true;
+      //rangeFault = true;
     }
   } else {
     //timeOutFault = true;
