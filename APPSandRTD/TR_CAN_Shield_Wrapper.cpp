@@ -6,7 +6,7 @@ TR_CAN_Shield_Wrapper::TR_CAN_Shield_Wrapper(byte can_id, bool debug) {
   shield = new TR_CAN_Shield(can_id, debug);
 }
 
-void TR_CAN_Shield_Wrapper::sendTorque(int torque) {
+void TR_CAN_Shield_Wrapper::sendTorque(int torque, int enable) {
   byte torqueFieldOne = torque;
   byte torqueFieldTwo = 0;
 
@@ -15,17 +15,19 @@ void TR_CAN_Shield_Wrapper::sendTorque(int torque) {
     torqueFieldTwo = (byte) (torque - 255);
   }
   
-  byte arrayToSend[8] = {torqueFieldOne, torqueFieldTwo, 0, 0, 1, 1, 0, 0};
+  byte arrayToSend[8] = {torqueFieldOne, torqueFieldTwo, 0, 0, 1, 0, 0, 0};
+
+  arrayToSend[5] = enable;
   
   shield->can_send(0, arrayToSend);
 }
 
 void TR_CAN_Shield_Wrapper::sendRangeFault() {
-  sendTorque(0);
+  sendTorque(0, 0);
 }
 
 void TR_CAN_Shield_Wrapper::sendTimeoutFault() {
-  sendTorque(0);  
+  sendTorque(0, 0);  
 }
 
 void TR_CAN_Shield_Wrapper::updateStoredWheelSpeeds() {

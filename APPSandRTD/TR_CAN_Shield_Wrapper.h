@@ -24,7 +24,7 @@ class TR_CAN_Shield_Wrapper {
   public:
     TR_CAN_Shield_Wrapper(byte can_id, bool debug);
     TR_CAN_Shield* shield;
-    void sendTorque(int torque);
+    void sendTorque(int torque, int enable);
     void sendRangeFault();
     void sendTimeoutFault();
     void updateStoredWheelSpeeds();

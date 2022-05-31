@@ -18,6 +18,8 @@ void APPSControls::startUpSequence() {
   if ((ignitionOn(shield->shield) && readBrakeVoltage() > 2.0)) {
     playBuzzer();
     currentState = State::STARTED;
+  }else {
+    shield->sendTorque(0, 0);
   }
 }
 
@@ -90,7 +92,7 @@ void APPSControls::APPS() {
     if (torqueRequest >= MIN_TORQUE && torqueRequest <= MAX_TORQUE) {
       String t = String(torqueRequest);
       Serial.println("torque request: " + t);
-      //shield->sendTorque(torqueRequest);
+      shield->sendTorque(torqueRequest, 1);
     } else {
       rangeFault = true;
     }
