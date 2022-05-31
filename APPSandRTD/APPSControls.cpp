@@ -39,7 +39,7 @@ void APPSControls::APPS() {
 
   if(pedalOneTravel > 0 || pedalTwoTravel > 0) {
     //commented out because it messes with the screen
-    //digitalWrite(brakeIndicatorPin, HIGH);
+    digitalWrite(brakeIndicatorPin, HIGH);
   }
 
   /*
