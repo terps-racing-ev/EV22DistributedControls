@@ -11,6 +11,8 @@ class VehicleSpeedCalcControls: public Controls {
     LiquidCrystal* lcd;
 
     unsigned long prevTime;
+
+    bool enabled;
   public:
     VehicleSpeedCalcControls(int n);
     void doAction();

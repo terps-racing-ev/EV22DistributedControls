@@ -14,7 +14,7 @@ float readAPPSOne(TR_CAN_Shield* shield);
 
 float readAPPSTwo(TR_CAN_Shield* shield);
 
-bool ignitionOn();
+bool ignitionOn(TR_CAN_Shield* shield);
 
 int getSteeringAngle(TR_CAN_Shield* shield);
 
@@ -23,7 +23,7 @@ int getCoolantTemp(TR_CAN_Shield* shield);
 int getSuspensionTravel(TR_CAN_Shield* shield);
 
 const int PULSES_PER_ROTATION = 60;
-int readWheelSpeedSensor();
+int readWheelSpeedSensor(TR_CAN_Shield* shield);
 
 void playBuzzer();
 #endif

@@ -16,7 +16,7 @@ void VehicleSpeedCalcControls::doAction() {
   wheelSpeed1 = shield->getWheelSpeed(1);
   wheelSpeed2 = shield->getWheelSpeed(2);
   wheelSpeed3 = shield->getWheelSpeed(3);
-  wheelSpeed4 = readWheelSpeedSensor();
+  wheelSpeed4 = readWheelSpeedSensor(shield->shield);
   
   int vehicleSpeed = calculateVehicleSpeed(wheelSpeed1, wheelSpeed2, wheelSpeed3, wheelSpeed4);
 

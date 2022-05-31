@@ -12,11 +12,10 @@ APPSControls::APPSControls(int n): Controls(n) {
   rangeFault = false;
   shutDownFlag = false;
 
-
 }
 
 void APPSControls::startUpSequence() {
-  if (true || (ignitionOn() && readBrakeVoltage() > 2.0)) {
+  if ((ignitionOn(shield->shield) && readBrakeVoltage() > 2.0)) {
     playBuzzer();
     currentState = State::STARTED;
   }
@@ -91,12 +90,12 @@ void APPSControls::APPS() {
     if (torqueRequest >= MIN_TORQUE && torqueRequest <= MAX_TORQUE) {
       String t = String(torqueRequest);
       Serial.println("torque request: " + t);
-      shield->sendTorque(torqueRequest);
+      //shield->sendTorque(torqueRequest);
     } else {
-      //rangeFault = true;
+      rangeFault = true;
     }
   } else {
-    //timeOutFault = true;
+    timeOutFault = true;
   }
 }
 

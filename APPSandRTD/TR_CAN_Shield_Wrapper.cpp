@@ -15,7 +15,7 @@ void TR_CAN_Shield_Wrapper::sendTorque(int torque) {
     torqueFieldTwo = (byte) (torque - 255);
   }
   
-  byte arrayToSend[8] = {torqueFieldOne, torqueFieldTwo, 0, 0, 1, 0, 0, 0};
+  byte arrayToSend[8] = {torqueFieldOne, torqueFieldTwo, 0, 0, 1, 1, 0, 0};
   
   shield->can_send(0, arrayToSend);
 }
@@ -90,7 +90,7 @@ void TR_CAN_Shield_Wrapper::sendAllData(int vehicleSpeed) {
   int suspensionTravel = getSuspensionTravel(shield); //TODO transfer
   data[0] = (byte) suspensionTravel;
 
-  int wheelSpeed = readWheelSpeedSensor(); //TODO transfer
+  int wheelSpeed = readWheelSpeedSensor(shield); //TODO transfer
   if (wheelSpeed > 255) {
     data[1] = 255;
     data[2] = (byte) (wheelSpeed - 255);
